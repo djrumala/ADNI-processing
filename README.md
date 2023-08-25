@@ -1,6 +1,6 @@
 # About repository
 
-This repo includes technical documentation for data preparation of the ADNI dataset for the 3D classification of Alzheimer's Disease.
+This repo includes technical documentation for data preparation for 3D brain MR image classification using ADNI dataset.
 
 We have used this data preprocessing and processing of ADNI dataset for several publications (links will be attached when our works have been published)
 
