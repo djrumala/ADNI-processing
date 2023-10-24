@@ -1,16 +1,15 @@
-# About repository
-
+# About Repository
 This repo includes technical documentation for data preparation for 3D brain MR image classification using ADNI dataset.
 
-We have used this data preprocessing and processing of ADNI dataset for several publications (links will be attached when our works have been published)
+We have used this data preprocessing and processing of ADNI dataset for several publications (see: [About Citation](https://github.com/djrumala/ADNI-processing#about-citation))
 
 # Steps 
 The whole data preparation process is started out by:
 1. [Data Collecting](https://github.com/djrumala/ADNI-processing#data-collecting)
-2. [Data Cleaning](https://github.com/djrumala/khu-visit-data-prep#data-cleaning)
-3. [Data Preprocessing](https://github.com/djrumala/khu-visit-data-prep#data-preprocessing)
-4. [Data Augmentation](https://github.com/djrumala/khu-visit-data-prep#data-augmentation)
-5. [Data Loading](https://github.com/djrumala/khu-visit-data-prep#data-loading)
+2. [Data Cleaning](https://github.com/djrumala/ADNI-processingp#data-cleaning)
+3. [Data Preprocessing](https://github.com/djrumala/ADNI-processing#data-preprocessing)
+4. [Data Augmentation](https://github.com/djrumala/ADNI-processing#data-augmentation)
+5. [Data Loading](https://github.com/djrumala/ADNI-processing#data-loading)
 
 # Data Collecting
 The datasets are taken and downloaded from ADNI dataset here: `https://ida.loni.usc.edu/login.jsp`
@@ -112,3 +111,10 @@ The implemented data augmentation techniques include flipping and rotation. Flip
 Data loading is another important step in this experiment. During the data loading, we also need to make sure that the pairs of T1 and T2 data are fed together to the same model for the joint training technique. Besides, as we have all known, in order to prevent data leakage, data augmentation should be done after data splitting. However, in this experiment, we have first executed data augmentation. Since we want to do 5-fold cross validation and our data splitting is based on 70/10/20 separation for train/valid/test, we must build data loader that will load the data as if we performed proper data splitting (split the data before augmentation). To do that, we can make use of the `meta-id` in the file name. 
 
 In this case, we have created the data loading algorithm for proper data splitting as presented in section `Load Dataset` in the codes. The codes are available in the main repository.
+
+# About Citation
+For more detail please refer to the publication: 
+
+[1] Rumala, D.J. (2023). How You Split Matters: Data Leakage and Subject Characteristics Studies in Longitudinal Brain MRI Analysis. In: Wesarg, S., et al. Clinical Image-Based Procedures, Fairness of AI in Medical Imaging, and Ethical and Philosophical Issues in Medical Imaging . CLIP EPIMI FAIMI 2023 2023 2023. Lecture Notes in Computer Science, vol 14242. Springer, Cham. https://doi.org/10.1007/978-3-031-45249-9_23
+
+More information and comprehensive summary about this publication can be freely accessed here: [https://djrumala.github.io/publications/how-you-split-matters](https://djrumala.github.io/publications/how-you-split-matters)
