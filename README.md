@@ -115,6 +115,6 @@ In this case, we have created the data loading algorithm for proper data splitti
 # About Citation
 For more detail please refer to the publication: 
 
-[1] Rumala, D.J. (2023). How You Split Matters: Data Leakage and Subject Characteristics Studies in Longitudinal Brain MRI Analysis. In: Wesarg, S., et al. Clinical Image-Based Procedures, Fairness of AI in Medical Imaging, and Ethical and Philosophical Issues in Medical Imaging . CLIP EPIMI FAIMI 2023 2023 2023. Lecture Notes in Computer Science, vol 14242. Springer, Cham. https://doi.org/10.1007/978-3-031-45249-9_23
+[1] Rumala, D.J. (2023). How You Split Matters: Data Leakage and Subject Characteristics Studies in Longitudinal Brain MRI Analysis. In: Wesarg, S., et al. Clinical Image-Based Procedures, Fairness of AI in Medical Imaging, and Ethical and Philosophical Issues in Medical Imaging . CLIP EPIMI FAIMI 2023 2023 2023. Lecture Notes in Computer Science, vol 14242. Springer, Cham. [https://doi.org/10.1007/978-3-031-45249-9_23](https://doi.org/10.1007/978-3-031-45249-9_23){:target="_blank"}
 
-More information and comprehensive summary about this publication can be freely accessed here: [https://djrumala.github.io/publications/how-you-split-matters](https://djrumala.github.io/publications/how-you-split-matters)
+More information and comprehensive summary about this publication can be freely accessed here: [https://djrumala.github.io/publications/how-you-split-matters](https://djrumala.github.io/publications/how-you-split-matters){:target="_blank"}
