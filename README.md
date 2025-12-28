@@ -66,17 +66,38 @@ There are three major steps in here:
     - The preprocessed files are moved to folder `/preprocessed/` with the filename `{meta id}-{original filename}.nii.gz.`
     - List of not yet preprocessed files is saved as metadata inside the folder `/TempMeta/` with the filename `To-Be-Preprocessed_{seq}w_{group}.csv`
     - Note: This step can be skipped if there is not yet preprocessed data, but might be useful later when there are missed preprocessed data during the preprocessing step.
-2. Move the not yet preprocessed files
+2. Moving the not yet preprocessed files
     - Path of the source files refers to the raw original directory. In this work, raw directory is `/3T/`
     - Comparing files available in the original directory with the generated metadata in step 5.1. 
     - The files will be moved to folder `/TempData/` and put inside a decent sub-directory that contains `{subject id}-{series id}-{image id}`
     - The files will be kept as its original filename
-3. Move the new preprocessed files
+3. Moving the new preprocessed files
     - Compare the availability of the additional preprocessed files in folder `/preprocessed_addition` with the generated final metadata in Step 4
     - The preprocessed files are moved to folder `/preprocessed/` with the filename `{meta id}-{original filename}.nii.gz.`
     - Note: do not move manually since we need the filename to be changed into the standard `{meta id}-{original filename}.nii.gz.`. This is important to notice the pair of matched T1 and T2
+4. Moving DICOM Files to be Converted to Niftii
+    - The `move2convert()` function handles organizing DICOM files for conversion. Files are moved to a designated conversion folder (`/2convert/`) with sub-directories structured as `{subject-id}-{series-id}-{image-id}`.
+    - Current Steps:
+        - Compare the metadata with available DICOM files in the source directory `/DICOM/{seq}/{cond}/`
+        - Move matching DICOM files to `/2convert/{seq}/{cond}/{subject-id}-{series-id}-{image-id}/`
+        - Each file is organized by subject, series, and image IDs for proper tracking during conversion
+    - Source code: `move2convert()` function in `data_final_move.ipynb`
 
-Source code: `data_final_move.ipynb`
+5. Moving Non-Preprocessed Files to Preprocessing Queue
+    - The `move2preprocess()` function identifies and moves files that haven't been preprocessed yet. These files are organized with sub-directory structure for Windows-based preprocessing (e.g., via MATLAB SPM).
+    - Current Steps:
+        - Take files from the original directory `/3T/{seq}/{cond}/` based on the metadata list
+        - Move files to `/TempData/{seq}/{cond}/{subject-id}-{series-id}-{image-id}/`
+        - This organization enables easy transfer to Windows machines for SPM preprocessing
+    - Source code: `move2preprocess()` function in `data_final_move.ipynb`
+
+6. Moving Final Preprocessed Files (Free Move)
+    - The `freemove()` function provides flexible file movement based on filename patterns, especially useful for moving preprocessed files to the final folder.
+    - Current Steps:**
+        - Search for preprocessed files using a filename pattern filter (default: `*wm*.nii` - white matter segmented files)
+        - Move files from source folder (`/processed/`) to target folder (`/final/`)
+        - Files are organized by sequence and condition: `/final/{seq}/{cond}/`
+    - Source code: `freemove()` function in `data_final_move.ipynb`
 
 # Data Cleaning of Hold-Out Datasets For Robustness Evaluation
 We need new data (hold-out data) that has never been used before during training the models. It is necessary for robustness evaluation.
